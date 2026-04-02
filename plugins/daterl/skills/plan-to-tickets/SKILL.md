@@ -1,10 +1,10 @@
 ---
-name: plan-to-tickets
+name: dt:tickets
 description: >
   Use when the user has a completed plan (plans/{slug}-plan.md) and wants to
   decompose it into GitHub milestones and issues. Triggers: "티켓 만들어줘",
   "이슈 생성", "plan to tickets", "마일스톤 만들어", "GitHub 이슈로 분해",
-  "/plan-to-tickets", "개발 준비", "프로젝트 세팅"
+  "/dt:tickets", "개발 준비", "프로젝트 세팅"
 ---
 
 # Plan-to-Tickets
@@ -13,7 +13,7 @@ description: >
 
 ## CRITICAL Rules
 
-1. **플랜 파일 필수**: `plans/{slug}-plan.md`가 없으면 STOP. 사용자에게 `/plan` 먼저 실행 안내.
+1. **플랜 파일 필수**: `plans/{slug}-plan.md`가 없으면 STOP. 사용자에게 `/dt:plan` 먼저 실행 안내.
 2. **한국어 대화**: 모든 질문·산출물은 한국어. GitHub 이슈 제목/본문은 한국어 기본, 사용자 선호 시 영어.
 3. **턴당 AskUserQuestion 1회만**. 호출 후 STOP.
 4. **gh CLI 필수**: `gh auth status` 확인 후 진행. 실패 시 `gh auth login` 안내.

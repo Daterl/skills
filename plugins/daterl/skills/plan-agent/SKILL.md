@@ -1,5 +1,5 @@
 ---
-name: plan-agent
+name: dt:plan
 description: >
   Use when the user wants to plan a project, write a project spec, or turn a
   vague idea into a concrete plan with Notion output. Triggers: "기획 해줘",
@@ -65,7 +65,7 @@ description: >
 
 1. **Notion 페이지 생성**: `API-post-page` + `API-patch-block-children`. 위치 미지정 시 사용자에게 질문. 마크다운→Notion 블록 변환(heading/paragraph/bulleted_list_item/table/code/callout/divider).
 2. **로컬 백업**: `plans/{slug}-plan.md`
-3. **완료 안내**: Notion URL + 다음 단계 제안(`/spec-pipeline`, `/planning-with-files`)
+3. **완료 안내**: Notion URL + 다음 단계 제안(`/dt:tickets`, `/spec-pipeline`, `/planning-with-files`)
 
 ## Anti-patterns
 
