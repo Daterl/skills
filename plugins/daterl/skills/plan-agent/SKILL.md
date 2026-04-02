@@ -5,7 +5,6 @@ description: >
   vague idea into a concrete plan with Notion output. Triggers: "기획 해줘",
   "프로젝트 기획", "기획서 만들어줘", "프로젝트 설계해줘", "아이디어 구체화해줘",
   "기획 시작", "/plan", "plan this project"
-allowed-tools: "AskUserQuestion, Write, Read, Glob, Grep, mcp__notion-personal__*"
 ---
 
 # Plan Agent
