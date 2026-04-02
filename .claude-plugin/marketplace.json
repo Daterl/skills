@@ -1,0 +1,21 @@
+{
+  "name": "skills",
+  "owner": {
+    "name": "Daterl"
+  },
+  "metadata": {
+    "description": "Daterl 팀 Claude Code 플러그인 마켓플레이스"
+  },
+  "plugins": [
+    {
+      "name": "daterl",
+      "source": "./plugins/daterl",
+      "description": "Daterl 팀 기획·프로젝트 관리 스킬 번들 (plan-agent, plan-to-tickets)",
+      "version": "1.0.0",
+      "author": {
+        "name": "Daterl"
+      },
+      "keywords": ["planning", "project-management", "github", "notion", "snowflake"]
+    }
+  ]
+}
