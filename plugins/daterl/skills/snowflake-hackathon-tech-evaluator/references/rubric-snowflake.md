@@ -21,7 +21,26 @@
 - Warehouse 크기가 작업에 최적화되었는가? (AISQL에는 MEDIUM 이하 권장, XSMALL 충분한 경우 많음)
 - SQL 파일이 기능별로 체계화되었는가? (파이프라인 순서 추적 가능)
 
+**기술 적합성 체크 — 문제 유형 → 권장 Snowflake 기능**
+
+평가 전 프로젝트가 어떤 문제를 푸는지 파악한 뒤, 해당 문제 유형에 맞는 기능을 선택했는지 확인한다.
+미사용이 감점은 아니지만, 해당 기능이 명백히 필요한 도메인임에도 쓰지 않았다면 S1 점수를 보수적으로 산정한다.
+
+| 문제 유형 | 권장 Snowflake 기능 | CoCo 대응 스킬 | 확인 방법 |
+|----------|-------------------|--------------|---------|
+| 텍스트 분석 / 감성 / 요약 / OCR | `AI_COMPLETE`, `AI_SENTIMENT`, `AI_CLASSIFY` | cortex-ai-functions | SQL 파일에 AISQL 함수 존재 여부 |
+| 시계열 예측 / ML 추론 | `ML FORECAST`, `ML CLASSIFICATION`, Model Registry | machine-learning | `SNOWFLAKE.ML.*` 호출 여부 |
+| 비용 모니터링 / 크레딧 추적 | `QUERY_HISTORY`, `METERING_HISTORY`, `AI_COUNT_TOKENS` | cost-intelligence | 비용 추정 쿼리 또는 docs 문서 존재 여부 |
+| 데이터 품질 검증 / 이상 탐지 | Data Metric Functions (DMF) | data-quality | `CREATE DATA METRIC FUNCTION` 또는 `APPLY METRIC POLICY` |
+| 데이터 출처 추적 / 영향 분석 | Column-level Lineage, `OBJECT_DEPENDENCIES` | lineage | `SELECT * FROM SNOWFLAKE.ACCOUNT_USAGE.OBJECT_DEPENDENCIES` |
+| 외부 API / 스토리지 연결 | External Stage, Kafka Connector, REST API | integrations | `CREATE STAGE` + External 설정, Snowpipe |
+| 데이터 보안 / 컴플라이언스 | Dynamic Data Masking, Row Access Policy, Tag | data-governance | `CREATE MASKING POLICY`, `CREATE ROW ACCESS POLICY` |
+| 협업 / 데이터 공유 | Data Clean Rooms, Secure Data Sharing | data-cleanrooms | `CREATE CLEANROOM` 또는 `SHARE` DDL |
+| 노트북 기반 탐색 / 프로토타이핑 | Notebooks in Snowflake Workspaces | notebooks-in-workspaces | `.ipynb` 파일 또는 Notebook DDL |
+| dbt 파이프라인 운영 | dbt on Snowflake, Snowflake Git Integration | dbt-projects-on-snowflake | `dbt_project.yml` + Snowflake connection 설정 |
+
 > Reference: [Snowflake Dynamic Tables Complete Guide](https://dataengineerhub.blog/articles/snowflake-dynamic-tables-complete-guide-2025) — 200,000+ in production, 2,900+ customers
+> Reference: [Cortex Code (CoCo) 10 Skills Overview](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-code) — CoCo skill → Snowflake feature mapping
 
 ---
 
