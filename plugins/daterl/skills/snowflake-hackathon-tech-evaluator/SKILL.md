@@ -207,14 +207,21 @@ Snowflake TECH TRACK 심사표의 **기술 4개 카테고리(총 75점)** 기준
 | 5 | 3-4개 동작, 핵심 기능(Agent, Search) 미사용 또는 미구현 |
 | 2 | 1-2개만 동작 |
 
-**Cortex Agent 구성 품질 체크:**
-- `"auto"` 모델 선택 (Snowflake 권장: 최신 모델 자동 적용)
-- Orchestration instructions에 도구 선택 로직 명시 ("structured → Analyst, unstructured → Search")
-- Budget(seconds, tokens) 설정 여부
-- `warehouse` 필드가 빈 문자열이면 즉시 감점
+**Cortex Agent 구성 품질 체크 (4단계 프레임워크):**
+1. **Agent Description** (50-100단어): 에이전트 목적과 사용자 페르소나 명시
+2. **Tool Description**: 각 도구(Search/Analyst)의 적합 시나리오 명시
+3. **Orchestration Instructions**: 도구 선택 로직 ("structured query → Analyst, unstructured text → Search"), Budget(seconds, tokens) 설정
+4. **Response Instructions**: 출력 형식(마크다운/표/서사형) 지정
 
-> Reference: [Best Practices for Building Cortex Agents](https://www.snowflake.com/en/developers/guides/best-practices-to-building-cortex-agents/) — Snowflake Official Guide
-> Reference: [Cortex Search — State-of-the-art hybrid search](https://www.snowflake.com/en/blog/cortex-search-ai-hybrid-search/)
+**추가 체크포인트:**
+- `"auto"` 모델 선택 (Snowflake 권장: 최신 모델 자동 적용)
+- `warehouse` 필드가 빈 문자열(`""`)이면 즉시 실행 오류 → 감점
+- 다중 에이전트 패턴: Master Agent → Sub-Agent(전문화된 UDF) 계층 구조 시 가산
+- **Cortex Search 증분 인덱싱**: primary key 기반 → 전체 재색인 대비 50-70% 비용 절감 (TARGET_LAG 설정 확인)
+
+> Reference: [Best Practices for Building Cortex Agents](https://www.snowflake.com/en/developers/guides/best-practices-to-building-cortex-agents/) — Snowflake Official Guide (4-stage config framework)
+> Reference: [Cortex Search — State-of-the-art hybrid search](https://www.snowflake.com/en/blog/cortex-search-ai-hybrid-search/) — Incremental indexing cost analysis
+> Reference: [Cortex Agents Multi-Agent Patterns](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-overview) — Hierarchical UDF delegation
 
 **A2 — AI를 가치 창출 구조로 활용 (8점)**
 
