@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.0] - 2026-04-09
+
+### Added
+- snowflake-hackathon-tech-evaluator: Snowflake TECH TRACK 해커톤 기술 자가 평가 스킬 (12개 항목, 연구 기반 루브릭, CoCo 10 skills 매핑)
+
 ## [1.0.0] - 2026-04-02
 
 ### Added
