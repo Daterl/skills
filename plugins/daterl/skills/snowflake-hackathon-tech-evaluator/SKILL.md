@@ -1,5 +1,5 @@
 ---
-name: snowflake-hackathon-tech-evaluator
+name: dt:snowflake-hackathon-tech-evaluator
 description: >
   Use when scoring a Snowflake TECH TRACK hackathon submission before final review,
   identifying technical gaps against the official rubric, or reviewing a teammate's project quality.
